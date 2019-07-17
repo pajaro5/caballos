@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Corre corre</title>
+</head>
+<body>
+    <h1>Bienvenidos a las carreras!</h1>
+    <input type="button" value="Jugador 1" id="btnJugador1">
+    <br> <br>
+    <input type="button" value="Jugador 2" id="btnJugador2">
+    <br>
+    <input type="button" value="Mostrar Ganador" id="btnGanador">
+
+</body>
+<script src="js/caballo.js"></script>
+<script>
+    //creo jugador humano
+    var caballo = new Caballo("Rosinante","Quiteño");
+    //crear jugador Bot
+    var robot = new Caballo("Tiro al Blanco","Robot");
+    //juegan
+    document.getElementById("btnJugador1")
+        .addEventListener("click",function () {
+           caballo.avanzar();
+        });
+    document.getElementById("btnJugador2")
+        .addEventListener("click",function() {
+            robot.avanzar();
+        })
+    //mostrar ganador
+    document.getElementById("btnGanador")
+        .addEventListener("dblclick",function () {
+            if (caballo.totalRecorrido() > robot.totalRecorrido()) {
+                console.log(caballo.nombre + " es el ganador!");
+            }else
+                console.log(robot.nombre + " es el ganador");
+
+            console.log("_______________________");
+            console.log("Resultados");
+            console.log(caballo.nombre + " recorrió " + caballo.totalRecorrido());
+            console.log(robot.nombre + " recorrió " + robot.totalRecorrido());
+            
+        })
+</script>
+</html>
